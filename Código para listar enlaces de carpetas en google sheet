@@ -1,0 +1,22 @@
+function ListarCarpeta() {
+  var Hoja2 = SpreadsheetApp.getActive().getSheetByName("Hoja 2");
+  Hoja2.clear(); // Limpia la hoja antes de escribir
+  var cabecera = ["Nombre", "ID", "Creado", "Tamaño", "URL"];
+  Hoja2.appendRow(cabecera);
+
+  // Obtiene las subcarpetas dentro de la carpeta especificada
+  var folders = DriveApp.getFolderById("1dKsk9Xs-dElwfCSZ8Bx9JwLJzi1CWQ1D").getFolders();
+
+  while (folders.hasNext()) {
+    var folder = folders.next();
+    var datos = [
+      folder.getName(),
+      folder.getId(),
+      folder.getDateCreated(),
+      folder.getSize(),
+      folder.getUrl()
+    ];
+    Hoja2.appendRow(datos);
+  }
+
+}
