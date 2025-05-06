@@ -1,0 +1,6 @@
+function crearCarpetasAPartirDeUnListado() {
+  var libro=SpreadsheetApp.getActiveSpreadsheet();
+  var hoja=libro.getActiveSheet();
+  var rango=hoja.getDataRange("B2:B154").getValues();
+   for(var i = 0;i<155;i++) DriveApp.createFolder(rango[i][0])  
+}
